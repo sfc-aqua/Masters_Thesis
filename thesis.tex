@@ -70,7 +70,16 @@ pdftitle={RG},%
 \renewcommand{\topfraction}{.99}
 \renewcommand{\textfraction}{.0}
 \renewcommand{\floatpagefraction}{.99}
-\renewcommand{\bibname}{参考文献}
+\renewcommand{\bibname}{Bibliography}
+\renewcommand{\today}{\the\year/\the\month/\the\day}
+\renewcommand{\contentsname}{Contents}
+\renewcommand{\figurename}{Fig. }
+\renewcommand{\tablename}{Table. }
+\renewcommand{\refname}{References}
+\renewcommand{\listfigurename}{List of Figure}
+\renewcommand{\listtablename}{List of Table}
+\renewcommand{\prechaptername}{}
+\renewcommand{\postchaptername}{}
 
 
 \pagestyle{fancy}
@@ -120,7 +129,7 @@ pdftitle={RG},%
 \input{src/1_introduction}
 \input{src/2_theoryOfQuantumInformation}
 \input{src/3_theoryOfClassicalTeletraffic}
-\input{src/4_proposed}
+\input{src/4_problemDefinitionAndProposal}
 \input{src/5_implementation}
 \input{src/6_evaluation}
 \input{src/7_conclusion}
@@ -131,7 +140,7 @@ pdftitle={RG},%
 \setcounter{chapter}{0}
 \vspace{-5mm}
 
-
+\nocite{*}
 \input{bib/biblio}\thispagestyle{plain}%bibtex
 
 
