@@ -1,4 +1,4 @@
-\documentclass[12pt]{jreport}
+\documentclass[12pt]{article}
 \usepackage{comment}
 \usepackage{./sty/eclepsf}
 \usepackage{tascmac}
@@ -30,6 +30,8 @@ pdftitle={RG},%
 \usepackage{indentfirst}
 \usepackage{url}
 \usepackage{listings,./sty/jlisting}
+
+\usepackage{setspace}
 
 \def\lstlistingname{プログラム}
 
@@ -70,16 +72,6 @@ pdftitle={RG},%
 \renewcommand{\topfraction}{.99}
 \renewcommand{\textfraction}{.0}
 \renewcommand{\floatpagefraction}{.99}
-\renewcommand{\bibname}{Bibliography}
-\renewcommand{\today}{\the\year/\the\month/\the\day}
-\renewcommand{\contentsname}{Contents}
-\renewcommand{\figurename}{Fig. }
-\renewcommand{\tablename}{Table. }
-\renewcommand{\refname}{References}
-\renewcommand{\listfigurename}{List of Figure}
-\renewcommand{\listtablename}{List of Table}
-\renewcommand{\prechaptername}{}
-\renewcommand{\postchaptername}{}
 
 
 \pagestyle{fancy}
@@ -91,9 +83,9 @@ pdftitle={RG},%
 \makeatother
 
 % タイトル
-\def\title{量子インターネットのためのトラフィック生成モデル}
+\def\title{量子インターネットシミュレーションのためのトラフィック行列生成モデル}
 % 英語タイトル
-\def\etitle{Traffic Generation for Quantum Internet Simulator}
+\def\etitle{Traffic Generation Model for Quantum Internet Simulation}
 % 著者(日本語)
 \def\author{種谷 望}
 % 著者(英語)
@@ -136,8 +128,6 @@ pdftitle={RG},%
 %\input{src/appendix}
 \input{src/acknowledgement}
 
-\renewcommand{\thechapter}{\Alph{chapter}}
-\setcounter{chapter}{0}
 \vspace{-5mm}
 
 \nocite{*}
