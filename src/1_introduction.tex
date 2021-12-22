@@ -3,22 +3,36 @@
 
 \section{Background}
 \label{introduction:background}
+The Quantum Internet is a new internet that uses quantum entanglement and is expected to be a technology that will make up for the weaknesses of the current internet.
+Specifically, more robust cryptographic algorithms, faster solving of consensus problems and increased computational power through distributed quantum computation. 
+However, the Quantum Internet has not yet reached the practical stage due to many hardware limitations. 
+Nevertheless, many cryptographic algorithms and protocols are still being proposed so research activities on the Quantum Internet are flourishing.
 
+In implementing the Quantum Internet, it is necessary to test the network. 
+This is done to make sure that the protocols, etc. work properly for user use. 
+In order to test the network, we need traffic data. 
+To prepare traffic data, you need to use real data or generate it stochastically.
+However, since the Quantum Internet is not yet in practical use, it is not possible to use real data.
+Therefore, it needs to be generated stochastically.
+In the current Internet, traffic data is generated from the gravity model and the maximum entropy model, etc.
+The purpose of this paper is to establish a method of traffic data generation for the Quantum Internet.
 
 \section{Research Contribution}
 \label{introduction:research_contribution}
+The main contribution of this project is the establishment of a basis for traffic matrix generation in the Quantum Internet.
+The traffic matrix generation method used in the current Internet has been applied to the Quantum Internet.
+Thereby, implemented traffic data generation for a Quantum Internet simulator to help simulate the Quantum Internet.
 
 \section{Thesis Structure}
 \label{introduction:thesis_structure}
+This thesis is constructed as follows.
 
-本論文における以降の構成は次の通りである．
-
-~\ref{introduction}章では，背景を述べる．
-~\ref{theory_of_quantum_information}章では，本研究における問題の定義と，解決するための要件の整理を行う．
-~\ref{problem_definition_and_proposal}章では，本研究の提案手法を述べる．
-~\ref{implementation}章では，~\ref{problem_definition_and_proposal}章で述べたシステムの実装について述べる．
-~\ref{evaluation}章では，\ref{problem_definition_and_proposal}章で求められた課題に対しての評価を行い，考察する．
-~\ref{conclusion}章では，本研究のまとめと今後の課題についてまとめる．
+Chapter 2 describes the fundamentals of quantum information and the Quantum Internet.
+In chapter 3, I will introduce the knowledge of the traffic in classical communications and findings from previous studies.
+Chapter 4 details the problem definition of this research and the methods used to solve the problem.
+Chapter 5 describes how the method was implemented in a Quantum Internet simulator with actual code.
+Chapter 6 describes the evaluation of this research. It describes how to test the implemented functions.
+Chapter 7 provides a summary of this research and describes the future development of the research.
 
 
 %%% Local Variables:

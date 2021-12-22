@@ -62,6 +62,13 @@ pdftitle={RG},%
 \usepackage{array}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 
+\usepackage{amsmath}
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{dfn}{Definition}
+\newtheorem{thm}{Theorem}
+\newtheorem*{thm*}{Theorem}
+
 % A4  size: 297mm*210mm %1pt = 0.35mm
 \setlength{\topmargin}{-3.4mm} % 10pt 25.4mm - 3.4mm = 22mm
 \setlength{\oddsidemargin}{-0.4mm} % 25.4mm - 0.4mm = 25mm
@@ -80,9 +87,9 @@ pdftitle={RG},%
 
 
 % タイトル
-\def\title{量子インターネットシミュレーションのためのトラフィック行列生成モデル}
+\def\title{量子インターネットシミュレーションのためのトラフィック行列生成}
 % 英語タイトル
-\def\etitle{Traffic Generation Model for Quantum Internet Simulation}
+\def\etitle{Traffic Matrix Generation for Quantum Internet Simulation}
 % 著者(日本語)
 \def\author{種谷 望}
 % 著者(英語)
@@ -123,7 +130,7 @@ pdftitle={RG},%
 \input{src/6_evaluation}
 \input{src/7_conclusion}
 %\input{src/appendix}
-\input{src/acknowledgement}
+%\input{src/acknowledgement}
 
 \vspace{-5mm}
 
