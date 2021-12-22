@@ -44,8 +44,8 @@ This is because, as written earlier, the telephone and the Internet have differe
 
 Figure. \ref{fig:exponential} is shows a graph of exponential traffic by timescale.
 As you can see, the exponential traffic is smoothed out as the timescale is increased.
-
-  \begin{figure}[ht]
+\clearpage
+  \begin{figure}[!ht]
     \centering
     \includegraphics[width=5cm]{img/actual.png}
     \caption{Actual Traffic \protect \footnotemark}
@@ -84,8 +84,30 @@ This indicates that the traffic generation event occurrence is dependent on othe
 
 \section{Traffic Matrix}
 A Traffic Matrix is a matrix giving the traffic volumes between origin and destination in a network and has tremendously potential utility for IP network capacity planning and management.\cite{trafficmatrix}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=5cm]{img/4node-graph.png}
+  \caption{4-node Network}
+  \label{fig:net} 
+\end{figure}
+
+\begin{screen}
+  \begin{dfn}[Traffic Matrix]
+    Consider a simple four-node, all-coupled network as shown in Fig.\ref{fig:net}.
+    $T(i,j)$ means the amount of traffic from point j to point i. 
+      \begin{equation}
+          \begin{bmatrix}
+            T(A,A) & T(A,B) & T(A,C) & T(A,D) \\
+            T(B,A) & T(B,B) & T(B,C) & T(B,D) \\
+            T(C,A) & T(C,B) & T(C,C) & T(C,D) \\
+            T(D,A) & T(D,B) & T(D,C) & T(D,D) \\
+          \end{bmatrix}
+      \end{equation}
+  \end{dfn}
+\end{screen}
 \section{Gravity Model}
 Good for estimation and generation.
+Talk about estimation and synthesization.
 
 %%% Local Variables:
 %%% mode: japanese-latex
