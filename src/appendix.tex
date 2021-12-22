@@ -1,7 +1,83 @@
 \appendix
-\section{Appendix}
+\chapter{Appendix}
 
 
-\subsection{付録内容だよ}
+\section{Gravity Model Sample Code with Python}
 
-書くよ
+\begin{lstlisting}[language=python,caption=Generate Simple Network with Python]
+#Author: Nozomi Tanetani
+import networkx as nx
+import numpy as np
+import matplotlib.pyplot as plt 
+
+def graph_generator(n, p, seed):
+  g = nx.random_graphs.fast_gnp_random_graph(n, p, seed, directed = True) #Generate a random graph
+  g = g.to_undirected()
+
+  #Initialize a number of traffic per node as 0.
+  for i in g.nodes():
+    g.nodes[i]['in'] = 0
+    g.nodes[i]['out'] = 0
+
+  #Store a random number into number of traffic variable.
+  for i in g.nodes():
+    g.nodes[i]['in'] = np.random.randint(n*100,n*500)
+    tmp = g.nodes[i]['in']
+    for j in g.nodes():
+      if i is not j:
+        if j is n-1:
+          g.nodes[j]['out'] += tmp
+        else:
+          rand_tmp = np.random.randint(0,tmp)
+          g.nodes[j]['out'] += rand_tmp
+          tmp = tmp - rand_tmp
+  return g
+
+g = graph_generator(4, 1, 13)
+
+#Display a generated graph
+plt.figure(figsize=(8,8))
+
+pos = nx.circular_layout(g)
+nx.draw_networkx_nodes(g, pos, node_size=5500, node_color='gray')
+nx.draw_networkx_edges(g, pos)
+nx.draw_networkx_labels(g, pos, font_size=20)
+
+#Display
+labeldict = nx.get_node_attributes(g,'in')
+for i in g.nodes():
+  labeldict[i] = '\n\n' + str(labeldict[i])
+nx.draw_networkx_labels(g,pos,labels=labeldict,font_size=12,font_color='#FFAAAA')
+
+labeldict = nx.get_node_attributes(g,'out')
+for i in g.nodes():
+  labeldict[i] = '\n\n\n\n' + str(labeldict[i])
+nx.draw_networkx_labels(g,pos,labels=labeldict,font_size=12,font_color='#AAFFFF')
+print("red number is total traffic that enters the node.")
+print("blue number is total traffic that exits the node.")
+plt.show()
+\end{lstlisting}
+
+\begin{lstlisting}[language=python,caption=Gravity Generator Function with Python]
+def gravity_generator(graph):
+    tm = np.zeros((n,n))
+
+    for i in range(len(tm)):
+        for j in range(len(tm[i])):
+        if i is not j:
+            tmp = 0
+            for k in range(n):
+            if k is not i:
+                tmp += graph.nodes[k]['out']
+            tm[i][j] = int(np.round(graph.nodes()[i]['in'] * (graph.nodes[j]['out'] / tmp))) # Slide Page 15
+    for i in range(len(tm)):
+        if sum(tm[i]) - graph.nodes()[i]['in'] == 1:
+        tm[i][np.argmax(tm[i])] -= 1
+        elif graph.nodes()[i]['in'] - sum(tm[i]) == 1:
+        tm[i][np.argmax(tm[i])] += 1
+    return tm
+
+#Create a traffic matrix
+tm = gravity_generator(g)
+print(tm)
+\end{lstlisting}

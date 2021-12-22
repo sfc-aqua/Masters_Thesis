@@ -33,7 +33,8 @@ pdftitle={zomi's Bachelor's Thesis},%
 
 \usepackage{setspace}
 
-\def\lstlistingname{Listing}
+\def\lstlistingname{Code Listing}
+\def\lstlistlistingname{List of Code Listings}
 
 \lstset{%
  language={C++},
@@ -121,6 +122,8 @@ pdftitle={zomi's Bachelor's Thesis},%
 \clearpage
 \listoftables\thispagestyle{plain} %表目次
 \clearpage
+\lstlistoflistings\thispagestyle{plain}%コード目次
+\clearpage
 
 \pagenumbering{arabic}
 \input{src/1_introduction}
@@ -130,14 +133,14 @@ pdftitle={zomi's Bachelor's Thesis},%
 \input{src/5_implementation}
 \input{src/6_evaluation}
 \input{src/7_conclusion}
-%\input{src/appendix}
-%\input{src/acknowledgement}
 
 \vspace{-5mm}
 
 \nocite{*}
 \input{bib/biblio}\thispagestyle{plain}%bibtex
 
+%\input{src/acknowledgement}
+\input{src/appendix}
 
 \end{document}
 
