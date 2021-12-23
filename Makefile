@@ -5,7 +5,7 @@ DVIPDF = dvipdfmx
 DVI_VIEW = xdvi
 PS_VIEW = gv
 PS2PDF = ps2pdf
-NAME = zomi2021thesis
+NAME = thesis21-zomi
 TEXHTML = latex2html
 CC = clang
 
