@@ -110,9 +110,17 @@ A Traffic Matrix is a matrix giving the traffic volumes between origin and desti
 \end{screen}
 
 
+
 \section{Gravity Model}
-Good for traffic estimation and generation.
-Write about estimation and synthesization.
+In order to perform traffic testing, we need a traffic matrix.
+However, It is practically impossible to prepare a real traffic matrix in current Internet.
+This is because you have to measure all the packets, where each one comes from and where it goes. 
+However, since there are countless packets flowing over the Internet, it is impossible to do so.
+Therefore, in the current Internet, the gravity model is used to estimate the real traffic matrix from the ingress traffic and egress traffic of each node.
+
+The gravity model is an application of Newton's law of universal gravitation, which is used in social sciences to estimate the amount of logistics between regions.
+
+The gravity model is one of the better ways to generate the traffic matrix as well as estimate.
 
 %%% Local Variables:
 %%% mode: japanese-latex

@@ -3,55 +3,7 @@
 
 \section{Implementation}
 
-\begin{lstlisting}[language=c++,caption=Gravity Generator Function]
-void Application::gravityGenerator() {
-  int traffic_ini = par("TrafficIni");
-  int res;
-  double res_all = 0;
-
-  cTopology *topo = new cTopology("topo");
-  topo->extractByParameter("nodeType", provider.getQNode()->par("nodeType").str().c_str());
-
-  for (int i = 0; i < other_end_node_addresses.size(); i++) {
-    cTopology::Node *node = topo->getNode(i);
-    auto app_module = node->getModule()->getModuleByPath(".app");
-    if (app_module == nullptr) throw cRuntimeError("app module not found");
-    res = app_module->par("TrafficRes");
-    res_all += res;
-  }
-  for (int i = 0; i < other_end_node_addresses.size(); i++) {
-    cTopology::Node *node = topo->getNode(i);
-    auto app_module = node->getModule()->getModuleByPath(".app");
-    if (app_module == nullptr) throw cRuntimeError("app module not found");
-    res = app_module->par("TrafficRes");
-    traffic_matrix.push_back((int)round(traffic_ini * (res / res_all)));
-  }
-  int sum = std::accumulate(traffic_matrix.begin(), traffic_matrix.end(), 0);
-  while (sum != traffic_ini) {
-    std::vector<int>::iterator iter = std::max_element(traffic_matrix.begin(), traffic_matrix.end());
-    size_t max_index = std::distance(traffic_matrix.begin(), iter);
-    if (sum > traffic_ini) {
-      traffic_matrix[max_index] -= 1;
-    } else if (traffic_ini < sum) {
-      traffic_matrix[max_index] += 1;
-    }
-    sum = std::accumulate(traffic_matrix.begin(), traffic_matrix.end(), 0);
-  }
-
-  delete topo;
-}
-\end{lstlisting}
-
-\begin{lstlisting}[language=c++,caption=inside of initialize function]
-if (traffic_pattern == 3) {
-    gravityGenerator();
-    for (int i = 0; i < other_end_node_addresses.size(); i++) {
-        EV_INFO << traffic_matrix[i] << " requests will be sent from " << my_address << " to " << other_end_node_addresses[i] << "\n";
-        printf("%d requests will be sent from %d to %d\n", traffic_matrix[i], my_address, other_end_node_addresses[i]);
-    }
-    return;
-}
-\end{lstlisting}
+I will add pseudo code here.
 
 
 %%% Local Variables:
