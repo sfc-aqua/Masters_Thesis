@@ -8,10 +8,23 @@ In this paper, I propose a definition of traffic in the Quantum Internet and a m
 
 \section{Proposal}
 First, the traffic in the Quantum Internet should be defined. 
+\begin{screen}
+    \begin{dfn}[A Traffic in Quantum Internet]
+        A traffic in Quantum Internet is one connection, not number of bell pairs.
+    \end{dfn}
+\end{screen}
+
 Traffic in the Quantum Internet is defined as one connection to one traffic. 
 In other words, it does not matter how many bell pairs are shared in a single connection, or how long the connection takes.
 In the Quantum Internet, when a node wants to start a connection with another node, it sends a setup request to that node.
 Therefore, the number of setup requests sent by a node is the egress traffic, and the number of setup requests received by a node is the ingress traffic.
+
+\begin{itemize}
+    \item Initiator
+    \item Responder
+    \item Start time
+    \item Connection length
+\end{itemize}
 
 The generation of the traffic matrix for the Quantum Internet is done using the gravity model. 
 This is identical to the method traffic is generated on the current Internet. 
@@ -19,22 +32,31 @@ The method of the current Internet will be applied to the Quantum Internet.
 For the gravity model type, the simplest SimpleGravityModel is used.
 The reason for this is that this is the first attempt to apply the gravity model to Quantum Internet traffic generation, and in addition, the gravity model itself can be made more complex at will later.
 The equation for Simple Gravity Model\cite{zhang2003fast}\cite{trafficmatrix_presentation}, which represents the total amount of traffic going from point j to point i, is as follows.
+
 \begin{screen}
-    \begin{dfn}[Simple Gravity Model]
+    \begin{dfn}[Simple Gravity Model for Quantum Internet]
         \begin{equation}
-            T(i,j) = \frac{T_{ingress}(i)*T_{egress}(j)}{T_{total}}
+            T(n_i,n_j) = T^{initiator}(n_i) \times \frac{T^{responder}(n_j)}{T^{totalRes}(n_j)}
         \end{equation}
     \end{dfn}
-    $T(i,j)$ means the amount of traffic from point j to point i. 
-    $T_{ingress}(i)$ is ingress traffic at point i.
-    $T_{egress}(j)$ is egress traffic at point j.
-    $T_{total}$ is the amount of overall traffic movement in the network.
 \end{screen}
 
-The same equation for generating the traffic matrix is applied to the Quantum Internet. 
-For that, need to clarify the definition of ingress traffic and egress traffic in Quantum Internet.
+$T(n_i,n_j)$ means the amount of traffic from node j to node i. 
+$T^{initiator}(n_i)$ is initiator traffic at node i.
+$T^{responder}(n_j)$ is responder traffic at node j.
+$T^{totalRes}(n_j)$ is the amount of total responder traffic expect node j.
+
+The almost same equation for generating the traffic matrix is applied to the Quantum Internet.
+The only difference is in the way the total traffic amount is calculated.
+In the previous work, the total traffic is defined as the sum of the traffic of all the nodes including the own node.
+In this method, the total traffic is calculated as the sum of the traffic of the nodes other than the own node.
+The gravity model is based on the ratio of the size of the nodes to the amount of traffic. 
+The amount of traffic is determined by the ratio of the relative sizes of other nodes.
+
+In addition, need to clarify the definition of ingress traffic and egress traffic in Quantum Internet.
 The definitions of ingress traffic and egress traffic are described above. 
 Ingress traffic is the number of connection setup requests received by a node. 
+Egress traffic is the number of connection setup requests sent by a node.
 
 %%% Local Variables:
 %%% mode: japanese-latex

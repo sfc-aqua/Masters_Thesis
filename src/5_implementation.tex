@@ -3,7 +3,39 @@
 
 \section{Implementation}
 
-I will add pseudo code here.
+Here is the psuedo code for traffic matrix generation with simple gravity model for Quantum Internet.
+
+\begin{figure}[H]
+  \begin{algorithm}[H]
+    \caption{Traffic Matrix Generation with Simple Gravity Model for Quantum Internet}
+    \label{alg1}
+    \begin{algorithmic}
+      \Require 
+      $N$ (Number of nodes entire the network), \\
+      $T^{initiator}(n_i) : i = 1, \cdots, N;$ (Number of sent requests) ,\\
+      $T^{responder}(n_i) : i = 1, \cdots, N;$ (Number of received requests)
+      \Ensure $T(n_i, n_k) : i = 1, \cdots, N; k = 1, \cdots, N$ (Traffic matrix)
+      \For{$i=1,\cdots,N$}
+        \State $T^{total}(n_k) \leftarrow 0$
+        \For{$k=1,\cdots,N$}
+          \If{$i \neq k$}
+            \State $T^{total}(n_k) \leftarrow T^{total}(n_k) + T^{responder}(n_k)$
+          \EndIf
+        \EndFor
+        \For{$k=1,\cdots,N$}
+          \If{$i \neq k$}
+            \State $T(n_i, n_k) \leftarrow T^{initiator}(n_i) \times (T^{responder}(n_k) / T^{total}(n_k))$
+          \Else
+            \State $T(n_i, n_k) \leftarrow 0$
+          \EndIf
+        \EndFor
+      \EndFor
+      \State \Return $T(n_i, n_k)$
+    \end{algorithmic}
+  \end{algorithm}
+\end{figure}
+
+I implemented this in C++, the language of OMNeT++. You can see my actual code from code listings \ref{gravity_cpp}.
 
 
 %%% Local Variables:
