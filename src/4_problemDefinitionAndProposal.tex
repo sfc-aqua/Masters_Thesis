@@ -5,6 +5,7 @@
 Create the base for traffic testing to make the Quantum Internet practical. 
 Traffic tests in the Quantum Internet have yet to be devised. 
 In this paper, I propose a definition of traffic in the Quantum Internet and a method to generate traffic data for traffic tests and show the base of traffic tests for the Quantum Internet.
+The method is implemented as a function of QuISP, the Quantum Internet simulator.
 
 \section{Proposal}
 First, the traffic in the Quantum Internet should be defined. 
@@ -20,11 +21,19 @@ In the Quantum Internet, when a node wants to start a connection with another no
 Therefore, the number of setup requests sent by a node is the egress traffic, and the number of setup requests received by a node is the ingress traffic.
 
 \begin{itemize}
-    \item Initiator
-    \item Responder
-    \item Start time
-    \item Connection length
+    \item Initiator address : Who start the connection?
+    \item Responder address : Who is the responder in the connection?
+    \item Start time : When start the connection?
+    \item Connection length : How many Bell pairs sharing?
 \end{itemize}
+
+These are four basic elements for generating a traffic pattern.
+The goal of this project is to generate a static traffic matrix with the gravity model. 
+The gravity model can calculate the amount of traffic between a particular initiator and responder, but it does not determine the interval at which they are connected.
+Therefore, this project focus on the above two elements.
+
+The specific goal of this project is to implement the function of traffic matrix generation in QuISP, a simulator of quantum Internet.
+For the specific simulation, assume a simple one where a single static traffic matrix is taken as input and communication is performed based on it.
 
 The generation of the traffic matrix for the Quantum Internet is done using the gravity model. 
 This is identical to the method traffic is generated on the current Internet. 
@@ -50,13 +59,10 @@ The almost same equation for generating the traffic matrix is applied to the Qua
 The only difference is in the way the total traffic amount is calculated.
 In the previous work, the total traffic is defined as the sum of the traffic of all the nodes including the own node.
 In this method, the total traffic is calculated as the sum of the traffic of the nodes other than the own node.
+This is because in the current QuISP, it is not expected that a node will send a setup request to its own node.
+Therefore, it is necessary to exclude its own node from the total traffic.
 The gravity model is based on the ratio of the size of the nodes to the amount of traffic. 
 The amount of traffic is determined by the ratio of the relative sizes of other nodes.
-
-In addition, need to clarify the definition of ingress traffic and egress traffic in Quantum Internet.
-The definitions of ingress traffic and egress traffic are described above. 
-Ingress traffic is the number of connection setup requests received by a node. 
-Egress traffic is the number of connection setup requests sent by a node.
 
 %%% Local Variables:
 %%% mode: japanese-latex

@@ -132,3 +132,64 @@ def gravity_generator(graph):
 tm = gravity_generator(g)
 print(tm)
 \end{lstlisting}
+
+\section{Unit Test Code}
+Test code to confirm whether my traffic matrices generation calculation is correct.
+\begin{lstlisting}[language=c++,caption=Test code for confirming the calculation, label=eval_code]
+TEST(AppTest, Gravity_Model_3node) {
+  auto *sim = prepareSimulation();
+  auto *mock_qnode = new TestQNode{123};
+  auto *mock_qnode2 = new TestQNode{456};
+  auto *mock_qnode3 = new TestQNode{789};
+
+  auto *app = new AppTestTarget{mock_qnode};
+  setParBool(app, "EndToEndConnection", true);
+  setParInt(app, "num_measure", 1);
+  setParInt(app, "TrafficPattern", 3);
+  setParInt(app, "distant_measure_count", 100);
+  setParInt(app, "LoneInitiatorAddress", 123);
+  setParInt(app, "TrafficIni", 90); //set the amount of initiator traffic
+  setParInt(app, "TrafficRes", 0); //set the amount of responder traffic
+  app->setName("app");
+  call_private::insertSubmodule(*dynamic_cast<cModule *>(mock_qnode), app);
+  sim->registerComponent(mock_qnode);
+  sim->registerComponent(app);
+
+  auto *app2 = new AppTestTarget{mock_qnode2};
+  setParBool(app2, "EndToEndConnection", true);
+  setParInt(app2, "num_measure", 1);
+  setParInt(app2, "TrafficPattern", 3);
+  setParInt(app2, "distant_measure_count", 100);
+  setParInt(app2, "LoneInitiatorAddress", 123);
+  setParInt(app2, "TrafficIni", 0); //set the amount of initiator traffic
+  setParInt(app2, "TrafficRes", 60); //set the amount of responder traffic
+  app2->setName("app");
+  call_private::insertSubmodule(*dynamic_cast<cModule *>(mock_qnode2), app2);
+  sim->registerComponent(mock_qnode2);
+  sim->registerComponent(app2);
+
+  auto *app3 = new AppTestTarget{mock_qnode3};
+  setParBool(app3, "EndToEndConnection", true);
+  setParInt(app3, "num_measure", 1);
+  setParInt(app3, "TrafficPattern", 3);
+  setParInt(app3, "distant_measure_count", 100);
+  setParInt(app3, "LoneInitiatorAddress", 123);
+  setParInt(app3, "TrafficIni", 0); //set the amount of initiator traffic
+  setParInt(app3, "TrafficRes", 30); //set the amount of responder traffic
+  app3->setName("app");
+  call_private::insertSubmodule(*dynamic_cast<cModule *>(mock_qnode3), app3);
+  sim->registerComponent(mock_qnode3);
+  sim->registerComponent(app3);
+
+  app->callInitialize();
+  app2->callInitialize();
+  app3->callInitialize();
+  ASSERT_EQ(app->getAddress(), 123);
+  ASSERT_EQ(app2->getAddress(), 456);
+  ASSERT_EQ(app3->getAddress(), 789);
+
+  ASSERT_EQ(app->gravityGenerator().size(), 2);
+  ASSERT_EQ(app->gravityGenerator()[0], 60); //Assertion test wheather the amount of traffic from node 1 to node 2 is 60
+  ASSERT_EQ(app->gravityGenerator()[1], 30); //Assertion test wheather the amount of traffic from node 1 to node 3 is 30
+}
+\end{lstlisting}

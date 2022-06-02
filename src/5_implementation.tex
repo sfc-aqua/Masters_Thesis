@@ -3,6 +3,7 @@
 
 \section{Implementation}
 
+\subsection{Psuedo Code}
 Here is the psuedo code for traffic matrix generation with simple gravity model for Quantum Internet.
 
 \begin{figure}[H]
@@ -35,9 +36,30 @@ Here is the psuedo code for traffic matrix generation with simple gravity model 
   \end{algorithm}
 \end{figure}
 
-I implemented this in C++, the language of OMNeT++. You can see my actual code from code listings \ref{gravity_cpp}.
+According to the QuISP specification, each node has its own information about where it sent the setup request to.
+Therefore, the implementation does not directly generate the traffic matrix for the network as a whole.
+For this reason, in the gravity model, each node calculates the amount of traffic it sends from itself by retrieving data from other nodes. 
+This is the specification in my implementation.
 
+I implemented this in C++, the language of OMNeT++. 
+You can see my actual code from code listings \ref{gravity_cpp}.
 
+\subsection{Demo on QuISP}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm]{img/QuISP_input.png}
+  \caption{Input Display in QuISP}
+  \label{fig:QuISP_input} 
+\end{figure}
+When you set up the simulation, you will be asked for node data, as shown in the figure above.
+You have to input the amount of initiator traffic and the amount of responder traffic for each node.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=10cm]{img/QuISP_result.png}
+  \caption{Result Display in QuISP}
+  \label{fig:QuISP_result} 
+\end{figure}
+After entering the node data and starting the simulation, the addresses of the initiator and responder and the amount of traffic between the two will be output.
 %%% Local Variables:
 %%% mode: japanese-latex
 %%% TeX-master: "../bthesis"

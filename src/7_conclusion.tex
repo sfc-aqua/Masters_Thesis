@@ -1,10 +1,17 @@
 \chapter{Conclusion}
 \label{conclusion}
 \section{Conclusion}
-In this research, I proposed a method for generating traffic matrices based on current Internet methods, and implemented it in a Quantum Internet simulator.
+In this project, I defined "traffic" in the Quantum Internet, and applied the traffic data generation using the gravity model, which is the mainstream in the current Internet, to the Quantum Internet.
+I also implemented this model in QUISP, a Quantum Internet simulator ran on OMNeT++, and tested it.
+I also evaluated the traffic matrices generated using several measures of errors.
+In this way, It have been shown the basis for traffic testing in the Quantum Internet.
 
-
-
+As for future work, the first step is to conduct traffic tests using the generated traffic matrix to verify its effectiveness.
+It is currently not possible to test this due to the simulator's functionality, but we should add the missing functionality and do a traffic test to check the behavior.
+The next step is to implement a model other than the gravity model and compare each model.
+The gravity model is a very simple model. 
+Simplicity is a good thing, but too much simplicity is not so good.
+Other models have already been proposed for generating traffic matrices in the current Internet, so it would be worthwhile to try them in the Quantum Internet.
 %%% Local Variables:
 %%% mode: japanese-latex
 %%% TeX-master: "../thesis"

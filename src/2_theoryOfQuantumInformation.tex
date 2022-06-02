@@ -119,8 +119,8 @@ Such a state is called "entangled state"(section \ref{entanglement}).
 \section{Quantum Gates}
 Classical computers have what are called logic gates, and quantum gates are their counterparts.
 All quantum gates can be represented by a matrix.
-Also, all quantum gates satisfy the unitary matrix, $U^*U = UU^* = I$.
-U is the unitary matrix, U* is the adjugate matrix of U, and I is the identity matrix.
+Also, all quantum gates satisfy the unitary matrix, $U^\dagger U = UU^\dagger = I$.
+$U$ is the unitary matrix, $U^\dagger$ is the adjoint of $U$, and $I$ is the identity matrix.
 Multiple quantum gates can be regarded as a single quantum gate by multiplying them together since they are a matrix.
 
 There are two main types of quantum gates: single qubit gates and controlled gates (multiple qubit gates).
@@ -430,6 +430,13 @@ The node which sends the connection setup request is called the initiator, and t
 
 \subsection{Quantum Internet Simulator}
 Our group, AQUA, has released QuISP, a Quantum Internet simulator. \cite{satoh2021quisp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{img/QuISP_screenshot.png}
+    \caption{QuISP Display while running simulation}
+    \label{fig:QuISP} 
+\end{figure}
 
 However, its functionality is limited so it does not allow us to test traffic using the gravity model, nor does it allow us to connect to multiple nodes or measure traffic.
 
