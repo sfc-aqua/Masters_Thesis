@@ -1,4 +1,4 @@
-Traffic Matrix Generation for Quantum Internet Simulation
+Fairness Guarantee and Quality of Service for Quantum Internet Applications
 =====
 
 | | |
